@@ -203,39 +203,39 @@ np.save('act_diff', act_diff)
 
 
 # %%
-plt.figure(dpi=100, tight_layout=True)
-fig, axn = plt.subplots(23, 23, sharex=True, sharey=True)
-cbar_ax = fig.add_axes([0.93, .2, .02, .6])
-vmax = act_clean.max()
+# plt.figure(dpi=100, tight_layout=True)
+# fig, axn = plt.subplots(23, 23, sharex=True, sharey=True)
+# cbar_ax = fig.add_axes([0.93, .2, .02, .6])
+# vmax = act_clean.max()
 
-for i, ax in enumerate(tqdm(axn.flat)):
-    if i >= 512:
-        break
-    ax.axis("off")
-    sns.heatmap(act_clean[i], ax=ax,
-                cbar=i == 0,
-                vmin=0, vmax=vmax,
-                cbar_ax=None if i else cbar_ax,
-                square=True)
-fig.savefig("act_clean.png", bbox_inches='tight', pad_inches=0)
+# for i, ax in enumerate(tqdm(axn.flat)):
+#     if i >= 512:
+#         break
+#     ax.axis("off")
+#     sns.heatmap(act_clean[i], ax=ax,
+#                 cbar=i == 0,
+#                 vmin=0, vmax=vmax,
+#                 cbar_ax=None if i else cbar_ax,
+#                 square=True)
+# fig.savefig("act_clean.png", bbox_inches='tight', pad_inches=0)
 
 
 # %%
-plt.figure(dpi=100, tight_layout=True)
-fig, axn = plt.subplots(23, 23, sharex=True, sharey=True)
-cbar_ax = fig.add_axes([0.93, .2, .02, .6])
-vmax = act_poison.max()
+# plt.figure(dpi=100, tight_layout=True)
+# fig, axn = plt.subplots(23, 23, sharex=True, sharey=True)
+# cbar_ax = fig.add_axes([0.93, .2, .02, .6])
+# vmax = act_poison.max()
 
-for i, ax in enumerate(tqdm(axn.flat)):
-    if i >= 512:
-        break
-    ax.axis("off")
-    sns.heatmap(act_poison[i], ax=ax,
-                cbar=i == 0,
-                vmin=0, vmax=vmax,
-                cbar_ax=None if i else cbar_ax,
-                square=True)
-fig.savefig("act_poison.png", bbox_inches='tight', pad_inches=0)
+# for i, ax in enumerate(tqdm(axn.flat)):
+#     if i >= 512:
+#         break
+#     ax.axis("off")
+#     sns.heatmap(act_poison[i], ax=ax,
+#                 cbar=i == 0,
+#                 vmin=0, vmax=vmax,
+#                 cbar_ax=None if i else cbar_ax,
+#                 square=True)
+# fig.savefig("act_poison.png", bbox_inches='tight', pad_inches=0)
 
 
 # %%
@@ -270,6 +270,7 @@ for i, ax in enumerate(tqdm(axn.flat)):
         title += ' Linf_top:{} '.format(
             np.where(top5_poison_linf_idx == i)[0][0])
     if title != '':
+        title = 'N:{} '.format(i) + title
         ax.set_title(title, fontsize=6)
     sns.heatmap(act_diff[i], ax=ax,
                 cbar=i == 0,
